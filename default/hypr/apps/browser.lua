@@ -7,7 +7,7 @@ o.window({ tag = "chromium-based-browser" }, { tile = true })
 o.window("(^.+-youtube\\.com__.*$|^.+-app\\.zoom\\.us__wc_home.*$)", { tag = "-chromium-based-browser" })
 
 -- Hide screen sharing notification windows.
-o.window({ tag = "chromium-based-browser", title = "^(.* is sharing your screen\\.|.* is sharing a window\\.)$" }, {
+o.window({ tag = "chromium-based-browser", title = "^(.* is sharing your screen\\.|.* is sharing a window\\.|.* is sharing a tab\\.)$" }, {
   workspace = "special silent",
   float = true,
   move = { "100%-w-40", "100%-w-40" },
