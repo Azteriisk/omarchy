@@ -7,17 +7,11 @@ o.window({ tag = "chromium-based-browser" }, { tile = true })
 o.window("(^.+-youtube\\.com__.*$|^.+-app\\.zoom\\.us__wc_home.*$)", { tag = "-chromium-based-browser" })
 
 -- Hide screen sharing notification windows.
-o.window({ tag = "chromium-based-browser", title = "^(.* is sharing your screen\\.|.* is sharing a window\\.|.* is sharing a tab\\.)$" }, {
+-- The Chromium notification bar maps with an empty class under Wayland and its "Hide" button is broken.
+-- Match the notification title across supported browser locales and send it to the special workspace.
+o.window({
+  title = ".*(is sharing|compartilhando|compartiendo|partage|geteilt|freigegeben|condivid|udostępnia|deelt|предостав|демонстрирует|共有しています|正在共享|正在分享).*",
+}, {
   workspace = "special silent",
-  float = true,
-  move = { "100%-w-40", "100%-w-40" },
-  pin = true,
-  no_focus = true
 })
-o.window({ tag = "firefox-based-browser", title = "^Firefox — Sharing Indicator$" }, {
-  workspace = "special silent",
-  float = true,
-  move = { "100%-w-40", "100%-w-40" },
-  pin = true,
-  no_focus = true
-})
+
