@@ -8,9 +8,12 @@ o.window("(^.+-youtube\\.com__.*$|^.+-app\\.zoom\\.us__wc_home.*$)", { tag = "-c
 
 -- Hide screen sharing notification windows.
 -- The Chromium notification bar maps with an empty class under Wayland and its "Hide" button is broken.
--- Match the notification title across supported browser locales and send it to the special workspace.
+o.window({ title = ".*is sharing.*" }, { workspace = "special silent" })
+
+-- Localized titles are common words, so match them only on the classless notification bar.
 o.window({
-  title = ".*(is sharing|compartilhando|compartiendo|partage|geteilt|freigegeben|condivid|udostępnia|deelt|предостав|демонстрирует|共有しています|正在共享|正在分享).*",
+  class = "^$",
+  title = ".*(compartilhando|compartiendo|partag|geteilt|freigegeben|condivid|udostępnia|deelt|предостав|демонстрирует|共有しています|正在共享|正在分享|正在共用).*",
 }, {
   workspace = "special silent",
 })
